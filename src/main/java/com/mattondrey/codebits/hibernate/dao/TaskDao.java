@@ -1,14 +1,13 @@
-package com.mattondey.codebits.hibernate.dao;
+package com.mattondrey.codebits.hibernate.dao;
 
 import java.util.List;
 
+import com.mattondrey.codebits.hibernate.model.Task;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
-import com.mattondey.codebits.hibernate.model.Task;
 
 public class TaskDao extends TaskDaoInterface<Task, String> {
     private Session currentSession;

@@ -1,9 +1,11 @@
 body {
-    margin: 0;
+    margin: 20px;
     background-color: black;
     color: white;
-    overflow: hidden;
-    font-family: var(--speedo-font);
+}
+
+.taskBody {
+    padding:20px;
 }
 
 input {
@@ -19,8 +21,42 @@ input {
 }
 
 .taskFooter {
-    background-color: red;
+    background-color: lightgreen;
+    color:black;
+    margin:10px;
+    padding:10px;
     font-size:32px;
     font-weight:bold;
     text-align:center;
+}
+
+.taskFormBody {
+    padding:20px;
+    border-radius:15px;
+    border: 2px solid lightgreen;
+}
+
+.currentTasks {
+    background-color: red;
+    font-size:10px;
+    padding:5px;
+}
+
+.editRow {
+    height:30px;
+}
+
+.taskTitle {
+    padding: 0px;
+    margin-left: 0px;
+    color: white;
+    font-width: bold;
+}
+.taskDescription {
+    color: lightgreen;
+}
+.taskDate {
+    padding: 5px;
+    width: 100px;
+    color: lightgreen;
 }

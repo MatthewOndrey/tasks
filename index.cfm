@@ -16,46 +16,47 @@
 
 <script type='text/javascript'>
 
+    function getTasks() {
+        $.ajax({
+            url: 'taskFunctions.cfc?method=getAllTasks',
+            type: 'GET',
+            dataType: "json",
+            success: function(response) {
+                var tasks = response.DATA;
+                var html = '';
+                for (var i = 0; i < tasks.length; i++) {
+                    html += '<div class="row editRow" id="editRow" data-id="' + tasks[i][0] + '">';
+                    html += '<span class="col taskTitle">' + tasks[i][1] + '</span>';
+                    html += '<span class="col taskDescription"> ' + tasks[i][2] + '</span>';
+                    html += '<span class="col taskDate">Due by ' + tasks[i][3] + '</span></div></div><br/>';
+                }
+                $('#currentTasks').html(html);
+            }
+        })
+    }
 
 
     $(document).ready(function() {
+
+        getTasks();
+
+        $(".editRow").click(function() {
+            console.log($(this).data("id"));
+        });
+
         $('form').submit(function(event) {
             event.preventDefault();
-            console.log('clicked');
             var formData = $(this).serialize();
-            console.log(formData);
             $.ajax({
                 url: 'taskFunctions.cfc?method=insertTask',
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response);
-                    alert(response);
+                    alert('Task Saved');
                 }
             });
         });
-
-      $.ajax({
-          url: 'taskFunctions.cfc?method=getAllTasks',
-          type: 'GET',
-          dataType: "json",
-          success: function(response) {
-              var tasks = response.DATA;
-              var html = '';
-              for (var i = 0; i < tasks.length; i++) {
-                  html += '<div>';
-                  html += '<p>Task: ' + tasks[i][1] + '</p>';
-                  html += '<p>Description: ' + tasks[i][2] + '</p>';
-                  html += '<p>Due Date: ' + tasks[i][3] + '</p>';
-                  html += '</div>';
-              }
-              $('#currentTasks').html(html);
-          }
-      })
-
-
-
 
     })
 
@@ -65,36 +66,31 @@
 
 <body>
 <cfoutput>
-<cfset myTasks = new taskFunctions()>
-<div class="container-fluid">
+<div class="container-fluid taskBody">
 
     <div class="taskForm" id="taskForm">
         <div class="taskHeader">
             Your Tasks -- #dateTimeFormat(now(), "short")#
         </div>
-        <div id="currentTasks">
 
-        </div>
         <div class="taskFormBody">
             <form id="taskForm">
-                <label for="task">Task:</label><input type="text" id="title" name="title"><br>
+                <label for="task">Task Title:</label><input type="text" id="title" name="title"><br>
                 <label for="description">Description:</label>
                 <input type="text" id="description" name="description"><br>
                 <label for="dueDate">Due Date:</label>
                 <input type="date" id="dueDate" name="dueDate"><br><br>
                 <input type="submit" value="Submit">
             </form>
-    <cfdump var="#myTasks#"/>
-
 
         </div>
-        <div class="taskFooter">
-          <button class="taskButton" name="task"></button>  LOAD
-        </div>
+
     </div>
-
-
 </div>
+        <div id="currentTasks" class="container"></div>
+
+
+
 </cfoutput>
 </body>
 

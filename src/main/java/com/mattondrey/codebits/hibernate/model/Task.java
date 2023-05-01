@@ -1,4 +1,4 @@
-package com.mattondey.codebits.hibernate.model;
+package com.mattondrey.codebits.hibernate.model;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class Task {
     private String taskDescription;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "due_date")
+    @Column(name = "dueDate")
     private Date taskDueDate;
 
     public int getTaskId() {

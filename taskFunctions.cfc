@@ -19,7 +19,7 @@
             id =  <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.id#"/>
         </cfquery>
 
-        <cfreturn getTasks />
+        <cfreturn getTaskById />
 
     </cffunction>
 
@@ -59,6 +59,19 @@
         </cfquery>
 
         <cfreturn true />
+
+    </cffunction>
+
+    <cffunction name="deleteTaskById" access="remote" returntype="boolean">
+        <cfargument name="id" type="numeric" required="true">
+
+        <cfquery name="getTasksById" datasource="tasks">
+            delete From tasks
+            where
+            id =  <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.id#"/>
+        </cfquery>
+
+        <cfreturn getTasksById />
 
     </cffunction>
 

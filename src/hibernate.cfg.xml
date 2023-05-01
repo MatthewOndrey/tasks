@@ -12,6 +12,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">false</property>
         <property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="com.mattondey.codebits.hibernate.model.Task"/>
+        <mapping class="com.mattondrey.codebits.hibernate.model.Task"/>
     </session-factory>
 </hibernate-configuration>
