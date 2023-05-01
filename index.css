@@ -4,6 +4,12 @@ body {
     color: white;
 }
 
+hr.greenLine {
+    padding: 0px;
+    border-top: 3px solid lightgreen;
+    margin: 0px;
+}
+
 .taskBody {
     padding:20px;
 }
@@ -37,26 +43,41 @@ input {
 }
 
 .currentTasks {
-    background-color: red;
-    font-size:10px;
+    font-size:14px;
     padding:5px;
 }
 
+.taskItem {
+    cursor: pointer;
+}
+
 .editRow {
-    height:30px;
+    height:20px;
 }
 
 .taskTitle {
-    padding: 0px;
-    margin-left: 0px;
+    padding: 10px 20px 1px 20px;
     color: white;
     font-width: bold;
 }
 .taskDescription {
+    padding: 10px 20px 1px 20px;;
     color: lightgreen;
 }
 .taskDate {
-    padding: 5px;
-    width: 100px;
+    width: 140px;
     color: lightgreen;
 }
+
+.tableBreak {
+    background-color: lightgreen;
+    padding: 0px;
+    margin: 0px;
+}
+
+.radioEdit {
+    padding:3px;
+    background-color: darkred;
+    border-radius: 5%;
+}
+
