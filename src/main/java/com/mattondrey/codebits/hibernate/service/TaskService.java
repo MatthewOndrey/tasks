@@ -1,9 +1,9 @@
-package com.mattondey.codebits.hibernate.service;
+package com.mattondrey.codebits.hibernate.service;
 
 import java.util.List;
 
-import com.mattondey.codebits.hibernate.dao.TaskDao;
-import com.mattondey.codebits.hibernate.model.Task;
+import com.mattondrey.codebits.hibernate.dao.TaskDao;
+import com.mattondrey.codebits.hibernate.model.Task;
 
 public class TaskService {
 

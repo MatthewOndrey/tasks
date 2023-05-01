@@ -4,6 +4,7 @@
 
         <cfquery name="getTasks" datasource="tasks">
             select id, title, description, dueDate From tasks
+            order by dueDate asc
         </cfquery>
 
         <cfreturn getTasks />
@@ -19,11 +20,12 @@
             id =  <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.id#"/>
         </cfquery>
 
-        <cfreturn getTasks />
+        <cfreturn getTaskById />
 
     </cffunction>
 
     <cffunction name="insertTask" access="remote" returntype="boolean">
+        <cfargument name="id" type="numeric" required="false"> <!--- ignored --->
         <cfargument name="title" type="string" required="true">
         <cfargument name="description" type="string" required="false">
         <cfargument name="dueDate" type="date" required="true">
@@ -47,7 +49,7 @@
         <cfargument name="description" type="string" required="false">
         <cfargument name="dueDate" type="date" required="true">
 
-        <cfquery name="insertTask" datasource="tasks">
+        <cfquery name="updateTask" datasource="tasks">
             update tasks set
             title =
             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.title#"/>,
@@ -56,6 +58,19 @@
             dueDate =
             <cfqueryparam cfsqltype="cf_sql_date" value="#arguments.dueDate#"/>
             where id = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.id#"/>
+        </cfquery>
+
+        <cfreturn true />
+
+    </cffunction>
+
+    <cffunction name="deleteTaskById" access="remote" returntype="boolean">
+        <cfargument name="id" type="numeric" required="true">
+
+        <cfquery name="getTasksById" datasource="tasks">
+            delete From tasks
+            where
+            id =  <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.id#"/>
         </cfquery>
 
         <cfreturn true />

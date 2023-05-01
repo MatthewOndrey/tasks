@@ -1,4 +1,4 @@
-package com.mattondey.codebits.hibernate.dao;
+package com.mattondrey.codebits.hibernate.dao;
 
 import java.io.Serializable;
 import java.util.List;
